@@ -1,0 +1,37 @@
+﻿@model Library.Models.Library
+
+<link rel="stylesheet" href="~/Content/LibrariesMap.css" />
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 id="pageTitle">@Html.DisplayFor(model => model.libraryName) Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal" id="details">
+        <dt>
+            @Html.DisplayNameFor(model => model.libraryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.libraryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.libraryAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.libraryAddress)
+        </dd>
+
+    </dl>
+
+    <div style="font-size: 16px; margin-left: 6.3em; color:#005348;">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
+

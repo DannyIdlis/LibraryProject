@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Library.Models.Rentals>
+
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<link rel="stylesheet" href="~/Content/Rental.css" />
+
+<!-- Facebook API Init -->
+<script>
+    window.fbAsyncInit = function () {
+        //SDK loaded, initialize it
+        FB.init({
+            appId: '1845371499107938',
+            xfbml: true,
+            version: 'v2.2'
+        });
+    };
+
+    //load the JavaScript SDK
+    (function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) { return; }
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.com/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+</script>
+
+@{
+    ViewBag.Title = "Rentals";
+}
+
+<h2 id="pageTitle">Rentals</h2>
+<br />
+
+<p style="font-size:20px; color:#005348; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif"">
+    &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+    @Html.ActionLink("Rent a New Book", "Index", "Books") &nbsp | &nbsp
+    @Html.ActionLink("All time Rentals", "IndexAll") &nbsp | &nbsp
+    @Html.ActionLink("Current Rentals", "Index") &nbsp
+</p>
+
+
+@if (!Model.Any())
+{
+<label id="error">You Have Not Rented a Book Yet</label>
+}
+else
+{
+    <table class="table" id="rentalsTable">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.rentalBook)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.rentalExpiration)
+            </th>
+            <th>
+                Share
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td> 
+                    @Html.DisplayFor(modelItem => item.rentalBook)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rentalExpiration)
+                </td>
+                <td>
+                    <div class="fb-share-button" data-href="https://www.kotar-rishon-lezion.org.il/" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.kotar-rishon-lezion.org.il%2F;src=sdkpreparse">Share</a></div>
+                </td>
+            </tr>
+        }
+   
+    </table>
+}

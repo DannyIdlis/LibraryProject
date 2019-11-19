@@ -1,0 +1,122 @@
+﻿@model Library.Models.RegisterViewModel
+
+<link rel="stylesheet" href="~/Content/Login.css" />
+
+@using CaptchaMvc.HtmlHelpers
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2 id="pageTitle">Create a New Account</h2>
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+
+    <div class="form-group">
+        <label id="loginLabel" class="control-label col-md-2">First Name</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.fName, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label id="loginLabel" class="control-label col-md-2">Last Name</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.lName, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label id="loginLabel" class="control-label col-md-2">Email</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label id="loginLabel" class="control-label col-md-2">Gender</label>
+        <div class="col-md-10" style="margin-bottom:-1em">
+            @{
+                var genders = new List<SelectListItem>();
+                genders.Add(new SelectListItem { Text = "Male", Value = "Male" });
+                genders.Add(new SelectListItem { Text = "Female", Value = "Female" });
+            }
+
+            @Html.DropDownList("gender", genders, htmlAttributes: new { @class = "form-control" }) <br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label id="loginLabel" class="control-label col-md-2">Date of Birth</label>
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.birth, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label id="loginLabel" class="control-label col-md-2">Membership Type</label>
+        <div class="col-md-10" style="margin-bottom:-1em">
+            @{
+                var types = new List<SelectListItem>();
+                types.Add(new SelectListItem { Text = "Free", Value = "1" });
+                types.Add(new SelectListItem { Text = "Premium", Value = "2" });
+            }
+
+            @Html.DropDownList("membershipType", types, htmlAttributes: new { @class = "form-control" }) <br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label id="loginLabel" class="control-label col-md-2">Password</label>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label id="loginLabel" class="control-label col-md-2">Confirm password</label>
+        <div class="col-md-10">
+            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label id="loginLabel" class="control-label col-md-2">Favorite Genre</label>
+        <div class="col-md-10" style="margin-bottom:-1em">
+            @{
+                var genres = new List<SelectListItem>();
+                genres.Add(new SelectListItem { Text = "Comedy", Value = "1" });
+                genres.Add(new SelectListItem { Text = "Romance", Value = "2" });
+                genres.Add(new SelectListItem { Text = "Drama", Value = "3" });
+                genres.Add(new SelectListItem { Text = "Action", Value = "4" });
+                genres.Add(new SelectListItem { Text = "Horror", Value = "5" });
+                genres.Add(new SelectListItem { Text = "SciFi", Value = "6" });
+                genres.Add(new SelectListItem { Text = "Kids", Value = "7" });
+                genres.Add(new SelectListItem { Text = "Family", Value = "8" });
+                genres.Add(new SelectListItem { Text = "Biography", Value = "9" });
+                genres.Add(new SelectListItem { Text = "Adult", Value = "10" });
+                genres.Add(new SelectListItem { Text = "Thriller", Value = "11" });
+                genres.Add(new SelectListItem { Text = "Adventure", Value = "12" });
+            }
+
+            @Html.DropDownList("genreID", genres, htmlAttributes: new { @class = "form-control" }) <br />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            @Html.Captcha(6) <br />
+            <p style="font-weight: bold;"> @ViewBag.ErrorMessage </p>
+            <input type="submit" class="btn btn-primary" value="Register" />
+        </div>
+    </div>
+                }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

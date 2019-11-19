@@ -1,0 +1,182 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<link rel="stylesheet" href="~/Content/Home.css" />
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<aside class="genres-blob" style="width:800px; margin:auto">
+    <div class="row">
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-indigo" style="color:white;width:100px; margin-top:20px" href="https://localhost:44300/
+               s/BooksByGenre?genreID=1">Comedy</a>
+        </div>
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-light-blue" style="color:white;width:100px; margin-top:20px" href="https://localhost:44300/Books/BooksByGenre?genreID=2">Romance</a>
+        </div>
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-purple" style="color:white;width:100px; margin-top:20px" href="https://localhost:44300/Books/BooksByGenre?genreID=3">Drama</a>
+        </div>
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-pink" style="color:white;width:100px; margin-top:20px" href="https://localhost:44300/Books/BooksByGenre?genreID=4">Action</a>
+        </div>
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-orange" style="color:white;width:100px; margin-top:20px" href="https://localhost:44300/Books/BooksByGenre?genreID=5">Horror</a>
+        </div>
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-yellow" style="color:white;width:100px; margin-top:20px" href="https://localhost:44300/Books/BooksByGenre?genreID=6">Sci-Fi</a>
+        </div>
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-red" style="color:white;width:100px; margin-top:10px" href="https://localhost:44300/Books/BooksByGenre?genreID=7">Biography</a>
+        </div>
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-green" style="color:white;width:100px; margin-top:10px" href="https://localhost:44300/Books/BooksByGenre?genreID=8">Children</a>
+        </div>
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-cyne" style="color:white;width:100px; margin-top:10px" href="https://localhost:44300/Books/BooksByGenre?genreID=9">Fantasy</a>
+        </div>
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-teal" style="color:white;width:100px; margin-top:10px" href="https://localhost:44300/Books/BooksByGenre?genreID=11">Thriller</a>
+        </div>
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-grey" style="color:white;width:100px; margin-top:10px" href="https://localhost:44300/Books/BooksByGenre?genreID=12">Adventure</a>
+        </div>
+        <div class="col-md-2">
+            <a class="w3-button w3-round-large w3-border w3-border-white w3-hover-pale-red" style="color:white;width:100px; margin-top:10px" href="https://localhost:44300/Books/BooksByGenre?genreID=10">Crime</a>
+        </div>
+    </div>
+</aside>
+
+<button class="genre-clickr" style="width:400px;">Which Genre of Books Do You Like?</button>
+<br />
+<script src="//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    $('.genres-blob').hide();
+
+    $('.genre-clickr').click(function () {
+        $('.genres-blob').slideToggle();
+    });
+</script>
+
+
+<div class="w3-content w3-display-container">
+    <img class="mySlides" src="~/Content/9goch9z.png" style="width:30%; margin:auto; height:30%">
+    <img class="mySlides" src="~/Content/art_bookcover.png" style="width:30%; margin:auto; height:30%">
+    <img class="mySlides" src="~/Content/biology.jpg" style="width:30%; margin:auto; height:30%">
+    <img class="mySlides" src="~/Content/Enchantment.jpg" style="width:30%; margin:auto; height:30%">
+    <img class="mySlides" src="~/Content/lolita.jpg" style="width:30%; margin:auto; height:30%">
+    <img class="mySlides" src="~/Content/PARENTS.jpg" style="width:30%; margin:auto; height:30%">
+    <img class="mySlides" src="~/Content/pieces_of_light.jpg" style="width:30%; margin:auto; height:30%">
+    <img class="mySlides" src="~/Content/seuss.jpg" style="width:30%; margin:auto; height:30%">
+    <img class="mySlides" src="~/Content/pride_and_prejudice.jpg" style="width:30%; margin:auto; height:30%">
+</div>
+
+<script>
+    var myIndex = 0;
+    carousel();
+
+    function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+            x[i].style.display = "none";
+        }
+        myIndex++;
+        if (myIndex > x.length) { myIndex = 1 }
+        x[myIndex - 1].style.display = "block";
+        setTimeout(carousel, 4000); // Change image every 4 seconds
+    }
+</script>
+
+<br />
+
+@if (User.Identity.IsAuthenticated)
+{
+    <a id="learningBtn" href="javascript:void(0)" class="recommend btn btn-primary">Not sure what to read? Let us help.</a>
+    <span id="machineLearning" class="recommendLoading"></span>
+}
+
+<script type="text/javascript">
+	$(function () {
+
+		// removal
+		$('.selectedbooks').on( "click", ".book .remove", function () {
+			$(this).parents('tr:first').remove();
+		});
+
+		// load books data
+		$.ajax({
+			type: "GET",async: true,dataType: "json",
+			url: '@Url.Action("GetBooks", "Recommender")',
+			success: function (data) {
+				window.booksData = data;
+				window.bookIdToData = {};
+				window.bookTitleToData = {};
+				var bookTitles = [];
+				for (var i = 0; i < window.booksData.length; i++) {
+					var bookData = window.booksData[i];
+					//console.log(bookData);
+					bookIdToData[bookData.bookId.toString()] = bookData;
+					bookTitleToData[bookData.title] = bookData;
+					bookTitles.push(bookData.title);
+				}
+
+				var addbookByTitle = function (val) {
+					if (bookTitleToData[val]) {
+						var bookData = bookTitleToData[val];
+						var $tr = $('<tr class="book"><td><span class="title"></span><a href="javascript:void(0)" class="pull-right remove"><span class="glyphicon glyphicon-remove"></span></a></td></tr>');
+						$tr.attr('data-book-id', bookData.bookId)
+						var $title = $tr.find('.title');
+						$title.text(bookData.title);
+
+						$tr.insertBefore($('.selectedbooks tr.selector'));
+					}
+				};
+
+				// add several books by default
+				addbookByTitle("Terminator 2: Judgment Day (1991)");
+				addbookByTitle("Aliens (1986)");
+
+				$('.selectbook').change(function () {
+					var val = $.trim($(this).val());
+					addbookByTitle(val);
+					$(this).val('');
+				});
+			}
+		});
+
+		$('a.recommend').click(function () {
+
+			var $btn = $(this);
+			if ($btn.attr('disabled')=='disabled') return;
+            $btn.attr('disabled', 'disabled');
+            $btn.hide('fast');
+			$('.recommendLoading').html('Loading BookLens ratings...').show('slow');
+
+            
+			$.ajax({
+				type: "POST", async: true, url: '@Url.Action("GetRecommendedbooks","Recommender")',
+                success: function (res) {
+                    if (res.book_id === 0) {
+                        $('.recommendLoading').html('You should rent some books before we can recommend :)');
+                        $('.recommendLoading').show('fast');
+                    }
+                    else {
+                        $('.recommendLoading').html('You should read ' + window.bookIdToData[res.book_id.toString()].title);
+                        $('.recommendLoading').show('fast');
+                    }
+				}
+			});
+
+
+		});
+
+
+
+	});
+</script>

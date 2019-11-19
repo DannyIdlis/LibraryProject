@@ -1,0 +1,82 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+
+<h2 id="pageTitle">About Us</h2>
+
+<div>
+    <img id="omer" src="~/Content/omer.jpg" style="width:0%">
+    <img id="bar" src="~/Content/bar.jpg" style="width:0%;">
+    <img id="eran" src="~/Content/eran.jpg" style="width:0%;">
+    <img id="danny" src="~/Content/danny.jpg" style="width:0%;">
+</div>
+
+<div class="row" id="about">
+    <div>
+        <button class="btn btn-danger" style="font-size:15px; margin-left:1em" onclick="printOmer()">How Omer Hakimi Looks Like?</button>
+        <br />
+        <canvas id="omerCanvas" width="350" height="350" style="width:60%">
+            Your browser does not support the HTML5 canvas tag :/
+        </canvas>
+    </div>
+    <div>
+        <button class="btn btn-primary" style="font-size:15px; margin-left:1em" onclick="printBar()">How Bar Maor Looks Like?</button>
+        <br />
+        <canvas id="barCanvas" width="350" height="350" style="width:60%">
+            Your browser does not support the HTML5 canvas tag :/
+        </canvas>
+    </div>
+    <div>
+        <button class="btn btn-warning" style="font-size:15px; margin-left:1em" onclick="printEran()">How Eran Ayalon Looks Like?</button>
+        <br />
+        <canvas id="eranCanvas" width="350" height="350" style="width:60%">
+            Your browser does not support the HTML5 canvas tag :/
+        </canvas>
+    </div>
+    <div>
+        <button class="btn btn-success" style="font-size:15px; margin-left:1em" onclick="printDanny()">How Danny Idlis Looks Like?</button>
+        <br />
+        <canvas id="dannyCanvas" width="350" height="350" style="width:60%">
+            Your browser does not support the HTML5 canvas tag :/
+        </canvas>
+    </div>
+
+</div>
+
+
+<script>
+    function printOmer() {
+        var c = document.getElementById("omerCanvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("omer");
+        ctx.drawImage(omer, 10, 10);
+    }
+
+</script>
+
+<script>
+    function printBar() {
+        var c = document.getElementById("barCanvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("bar");
+        ctx.drawImage(bar, 10, 10);
+    }
+</script>
+
+<script>
+    function printEran() {
+        var c = document.getElementById("eranCanvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("eran");
+        ctx.drawImage(eran, 10, 10);
+    }
+</script>
+
+<script>
+    function printDanny() {
+        var c = document.getElementById("dannyCanvas");
+        var ctx = c.getContext("2d");
+        var img = document.getElementById("danny");
+        ctx.drawImage(danny, 10, 10);
+    }
+</script>

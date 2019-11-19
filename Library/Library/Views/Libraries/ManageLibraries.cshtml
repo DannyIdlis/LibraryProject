@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Library.Models.Library>
+
+<link rel="stylesheet" href="~/Content/LibrariesMap.css" />
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 id="pageTitle">Libraries</h2>
+
+<p style="font-size:17px; margin-left:0.2em; color:#005348; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+    @Html.ActionLink("Create New Library", "Create")
+</p>
+    
+<table class="table" id="rentalsTable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.libraryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.libraryAddress)
+        </th>
+        <th>
+            Options
+        </th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.libraryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.libraryAddress)
+            </td>
+            <td style="margin-left:0.2em; color:#005348; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                </td>
+</tr>
+    }
+</table>
