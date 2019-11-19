@@ -1,0 +1,90 @@
+﻿@model IEnumerable<Library.ViewModel.RentalViewModel>
+
+
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+<link rel="stylesheet" href="~/Content/Rental.css" />
+
+@{
+    ViewBag.Title = "Rentals";
+}
+
+<h2 id="pageTitle">Rentals</h2>
+
+<p style="font-size:20px; color:#005348;">
+    &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+    @Html.ActionLink("All times Rentals", "IndexAll") &nbsp | &nbsp
+    @Html.ActionLink("Current Rentals", "Index") &nbsp | &nbsp
+    @Html.ActionLink("Group By Users", "GroupBy1") &nbsp | &nbsp
+    @Html.ActionLink("Group By Genres", "GroupBy2")&nbsp
+</p>
+
+@foreach (var genre in Model.GroupBy(g => g.genre))
+{
+    <button class="accordion">@Html.DisplayFor(modelItem => genre.Key)</button>
+
+    <div class="panel">
+        <table class="table table-hover table-bordered" id="rentalsTable" style="margin-left:-1.2em;">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.book)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.rentalUser)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.rentalExpiration)
+                    </th>
+                </tr>
+            </thead>
+            @foreach (var item in genre)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.book)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rentalUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rentalExpiration)
+                </td>
+            </tr>
+            }
+
+        </table>
+    </div>
+}
+
+<script>
+    var acc = document.getElementsByClassName("accordion");
+    var i;
+
+    for (i = 0; i < acc.length; i++)
+    {
+        acc[i].onclick = function(){
+            this.classList.toggle("active");
+            var panel = this.nextElementSibling;
+            if (panel.style.display === "block")
+            {
+                panel.style.display = "none";
+
+            }
+            else
+            {
+                panel.style.display = "block";
+            }
+        }
+    }
+</script>
+
+

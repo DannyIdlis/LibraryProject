@@ -1,0 +1,146 @@
+﻿@model IEnumerable<Library.ViewModel.InfoBookViewModel>
+
+<!--  jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Isolated Version of Bootstrap, not needed if your site already uses Bootstrap -->
+<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css" />
+
+<!-- Bootstrap Date-Picker Plugin -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css" />
+
+<link rel="stylesheet" href="~/Content/Search.css" />
+
+@{
+    ViewBag.Title = "Books";
+}
+
+<h2 id="pageTitle">Books</h2>
+<hr />
+
+<div class="row">
+    <div style="width: 40%; float:left; margin-left: 1.5em;">
+        <div class="container" style="width:1800px;">
+            @using (Html.BeginForm("Search", "Books"))
+            {
+                <p>
+                    <label class="label label-primary" style="font-size:18px; margin-left: -1.2em;">Search a Book</label>
+                    <div class="form-group" id="myForm" style="font-size:17px; margin-left: -2em; margin-top:20px;">
+                        @Html.Label("Genre:", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10" style="margin-bottom:-1em">
+                            @{
+                                var genres = new List<SelectListItem>();
+                                genres.Add(new SelectListItem { Text = "", Value = "0" });
+                                genres.Add(new SelectListItem { Text = "Comedy", Value = "1" });
+                                genres.Add(new SelectListItem { Text = "Romance", Value = "2" });
+                                genres.Add(new SelectListItem { Text = "Drama", Value = "3" });
+                                genres.Add(new SelectListItem { Text = "Action", Value = "4" });
+                                genres.Add(new SelectListItem { Text = "Horror", Value = "5" });
+                                genres.Add(new SelectListItem { Text = "SciFi", Value = "6" });
+                                genres.Add(new SelectListItem { Text = "Kids", Value = "7" });
+                                genres.Add(new SelectListItem { Text = "Family", Value = "8" });
+                                genres.Add(new SelectListItem { Text = "Biography", Value = "9" });
+                                genres.Add(new SelectListItem { Text = "Adult", Value = "10" });
+                                genres.Add(new SelectListItem { Text = "Thriller", Value = "11" });
+                                genres.Add(new SelectListItem { Text = "Adventure", Value = "12" });
+                            }
+
+                            @Html.DropDownList("genreID", genres, htmlAttributes: new { @class = "form-control" }) <br />
+                        </div>
+
+                        @Html.Label("Membership Type:", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10" style="margin-bottom:-1em">
+                            @{
+                                var types = new List<SelectListItem>();
+                                types.Add(new SelectListItem { Text = "", Value = "0" });
+                                types.Add(new SelectListItem { Text = "Free", Value = "1" });
+                                types.Add(new SelectListItem { Text = "Premium", Value = "2" });
+                            }
+
+                            @Html.DropDownList("membershipTypeID", types, htmlAttributes: new { @class = "form-control" }) <br />
+                        </div>
+
+                        @Html.Label("Date Release:", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10" style="margin-bottom:-1em">
+                            <div class="input-group date" data-provide="datepicker">
+                                <input type="text" class="form-control" style="width:240px;" name="date">
+                                <div class="input-group-addon" style="width:30px; margin-left: 8px">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-6" style="margin-left:7em; margin-top:30px">
+                            <button type="submit" class="btn btn-primary" style="width:100px"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                        </div>
+                    </div>
+                </p>
+            }
+        </div>
+    </div>
+
+    <div style="width: 40%; float:right; margin-left: 1.5em;">
+        <label class="label label-primary" style="font-size:18px; margin-left: 6em;"> The Joy Of Books </label>
+        <video id="video" style="margin-top: 10px" width="420" controls>
+            <source src="~/Content/the_joy_of_books.mp4" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+    </div>
+</div>
+
+<table class="table" id="bookTable">
+    <br />
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.genre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.book)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.releaseDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.author)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.summary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.membershipType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateAdded)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+            {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.genre)
+            </td>
+            <td>
+                @Html.ActionLink(item.book, "Rent", "Rentals", new { book = item.book }, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.releaseDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.author)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.summary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.membershipType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateAdded)
+            </td>
+        </tr>
+    }
+
+</table>

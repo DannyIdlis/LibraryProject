@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Library.Models.Library>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- Importing jQuery -->
+<script type="text/javascript" src="~/Scripts/jquery-1.10.2.js"></script>
+
+<link rel="stylesheet" href="~/Content/LibrariesMap.css" />
+
+<h2 id="pageTitle">Libraries</h2>
+
+<aside>
+    <p>Our library is located in Rishon LeZion, feel free to come and visit us!</p>
+</aside>
+
+<iframe src="https://api.openweathermap.org/data/2.5/weather?q=rishon%20lezion&units=metric&mode=html&appid=a79bd08c5d0384ebc498be5b9b3b8270" frameborder="0" width="200" height="200" align="right"></iframe>
+
+<div id="map_wrapper">
+    <div id="map_canvas" class="mapping"></div>
+</div>
+
+<script type="text/javascript">
+    jQuery(function($) {
+        // Asynchronously Load the map API
+        var script = document.createElement('script');
+        script.src = "//maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCKEtoSfsbmw51mRYLhRErdd0MbpkI89lo&callback=initialize";
+        document.body.appendChild(script);
+    });
+
+    function initialize() {
+        var map;
+        var bounds = new google.maps.LatLngBounds();
+        var mapOptions = {
+            mapTypeId: 'roadmap'
+        };
+
+        // Display a map on the page
+        map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+        map.setTilt(45);
+
+        // Multiple Markers
+        var markers = [];
+        var libraries = @Html.Raw(Json.Encode(Model));
+        var item = libraries[0];
+
+        for (i = 0; i < libraries.length; i++) {
+            var item = libraries[i];
+            var coordinates = item.libraryAddress.split(',');
+            markers.push([item.libraryName, coordinates[0], coordinates[1]]);
+        }
+
+        // Display multiple markers on a map
+        var infoWindow = new google.maps.InfoWindow(), marker, i;
+
+        // Loop through our array of markers & place each one on the map
+        for( i = 0; i < markers.length; i++ ) {
+            var position = new google.maps.LatLng(markers[i][1], markers[i][2]);
+            bounds.extend(position);
+            marker = new google.maps.Marker({
+                position: position,
+                map: map,
+                title: markers[i][0]
+            });
+            
+            // Automatically center the map fitting all markers on the screen
+            map.fitBounds(bounds);
+        }
+
+        // Override our map zoom level once our fitBounds function runs (Make sure it only runs once)
+        var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+            this.setZoom(14);
+            google.maps.event.removeListener(boundsListener);
+        });
+
+    }
+</script>
+
+
+

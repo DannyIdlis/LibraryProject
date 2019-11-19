@@ -1,0 +1,52 @@
+﻿@model Library.Models.Library
+
+<link rel="stylesheet" href="~/Content/LibrariesMap.css" />
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2 id="pageTitle">Create New Library</h2>
+<hr />
+<p style="font-size: 20px; color:#005348; font-weight:bold; font-style:italic">Library Address needs to be coordinates seperated by comma.</p>
+<p style="font-size: 18px; color:#005348; font-weight:bold; font-style:italic">View example for reference.</p>
+<br/>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label id="libraryLabel" class="control-label col-md-2">Library Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.libraryName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.libraryName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label id="libraryLabel" class="control-label col-md-2">Library Address</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.libraryAddress, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.libraryAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" style="margin-left:13em">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+<div style="font-size: 16px; margin-left: 11em">
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

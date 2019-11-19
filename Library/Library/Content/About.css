@@ -1,0 +1,292 @@
+﻿
+
+canvas { 
+	border: 1px solid gray; 
+	box-shadow: 3px 3px 7px #777; 
+}
+   
+body
+	{
+		background-color: #DDDDDD;
+		color:black;
+			font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+	}
+	
+h6{
+	color:#AA8888;
+	font-size:10px;
+	font-family: georgia;
+	text-decoration: underline;
+}
+	
+h2{
+	font-size:10px;
+	margin: 0px;
+	padding-bottom:20px;
+	padding-left: 3px;
+}
+	
+h4{
+	color:white;
+	font-size:60px;
+	text-shadow: 1px 1px 1px #888888, 1px 1px 1px #EEE;
+	margin: 0px;
+		
+}
+	
+	
+	
+	
+div#title_holder{
+	width:640px;
+	text-align: left;
+	margin: 0px;
+	padding: 0px;
+}
+div#settings_holder{
+	width:600px;
+	border: 1px  dotted #AA8888;
+	border-radius:2px;
+	margin: 0px;
+	padding:20px;
+	overflow: auto;
+		
+}
+input#message{
+	font-size:22px;
+	color: #555555;
+	size: 30;
+	font-family: Helvetica, Verdana, Arial, serif;
+	border: 3px solid #AA8888;;
+}
+button{
+	font-size:12px;
+	padding:4px;
+	font-family: Georgia, Verdana, Arial, serif;
+	 
+}
+li{
+	list-style-type:none;padding:10px 0px 0px 3px; 
+	color: #AA8888;
+	font-size:14px;
+		
+		
+}
+ul{
+text-align: left;
+}
+h6#urlText{
+	margin: 4px;
+}
+	
+p#Options{
+	color:#AA8888;
+	font-size:16px;
+	text-decoration: none;
+	margin: 2px;
+	font-family: georgia;		
+}
+div#footer{
+	font-family: georgia;	
+	font-size:12px;
+	font-weight: bold;
+	color:#888888;
+}
+a{
+color:#AA8888
+}
+p#shareURL{
+	
+	font-family: georgia;	
+	font-size:12px;
+	font-weight: bold;
+	color:#888888;
+}
+
+canvas#canvastree 
+{
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
+	width: 750px;
+	height: 400px;
+	border-bottom: 1px solid black;
+}
+a 
+{
+	color: black;
+}
+
+#about
+{
+	-webkit-column-count: 3; /* Chrome, Safari, Opera */
+	-moz-column-count: 3; /* Firefox */
+}
+
+#rentalSearchLabel
+{
+	font-size:18px; 
+	margin-left: -2em;
+}
+
+#advancedOptionsLabel
+{
+	margin-left: 9em;
+	font-size: 18px; 
+}
+
+#details
+{
+	width: 100%;
+	text-align:left;   
+}
+
+#details dt
+{
+	text-align: left;
+	width: 160px;
+	margin-bottom: 10px;
+}
+
+#details dd
+{
+	text-align: left;
+	margin-left: auto;
+}
+
+#rentalsTable
+{
+	border-collapse: collapse;
+	width: 100%;
+	text-align:center;
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-size: 15px;
+}
+
+#rentalsTable td, #rentalsTable th 
+{
+	border: 1px solid #ddd;
+	padding: 6px;
+	text-align:center;
+}
+
+#rentalsTable tr:nth-child(even)
+{
+	background-color: white;
+	text-align: center;
+}
+
+#rentalsTable tr:hover 
+{
+	background-color: white;
+	text-align: center;
+}
+
+#rentalsTable th 
+{
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: center;
+	background-color: #005348;
+	color: white;
+}
+
+#userLabel
+{
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	border-radius: 10px;
+	font-weight: bold;
+	background-color:#a1a1a1;
+	color: white;
+	font-size: 16px;
+	width: 100%;
+	height: 35px;
+	text-align:center;
+	padding-top:5px;
+}
+
+#error
+{
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	border-radius: 10px;
+	font-weight: bold;
+	background-color:#c9302c;
+	color: white;
+	font-size: 16px;
+	width: 40%;
+	height: 35px;
+	text-align:center;
+	padding-top:5px;
+	margin-left: 17em;
+}
+
+#pageTitle
+{
+	 text-shadow: 2px 2px #1C1C1C;
+	 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+	 font-weight: bold;
+	 font-size: 50px;
+}
+
+#userBtn
+{
+	font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	border-radius: 10px;
+	background-color:black;
+	color: white;
+	width: 380px;
+	height: 35px;
+	text-align:center;
+	padding-top:5px;
+}
+
+button.accordion 
+{
+	background-color:#a1a1a1;
+	font-weight: bold;
+	margin-bottom: 0.5em;
+	border-radius: 3px;
+	color: white;
+	cursor: pointer;
+	padding: 3px 18px;
+	width: 96.5%;
+	border: none;
+	text-align: center;
+	outline: none;
+	font-size: 15px;
+	transition: max-height 0.2s ease-out;
+	height: 35px;
+}
+
+#test
+{
+	background: radial-gradient(900px,rgba(128, 128, 128), rgba(255,0,0,0)); /* Standard syntax (must be last) */
+}
+
+button.accordion::after
+{
+	content: '\002B';
+	color: white;
+	font-weight: bold;
+	float: right;
+	margin-left: 5px;
+}
+
+button.accordion.active:after {
+	content: "\2212";
+	font-weight: bold;
+}
+
+#userBtn.accordion.active, button.accordion:hover 
+{
+	background-color: #a1a1a1;
+}
+
+div.panel 
+{
+	padding: 0 18px;
+	display: none;
+	background-color: transparent;
+	transition: max-height 0.2s ease-out;
+}

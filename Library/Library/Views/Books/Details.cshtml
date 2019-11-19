@@ -1,0 +1,76 @@
+﻿@model Library.Models.Books
+
+<link rel="stylesheet" href="~/Content/Search.css" />
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2 id="pageTitle">@Html.DisplayFor(model => model.bookName) Details</h2>
+
+
+<div>
+    <dl class="dl-horizontal" id="details">
+        <hr />
+        <dt>
+            @Html.DisplayNameFor(model => model.genreID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.genreID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.bookName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bookName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateAdded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateAdded)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.releaseDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.releaseDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.author)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.summary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.summary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.membershipType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.membershipType)
+        </dd>
+
+    </dl>
+
+    <div style="font-size: 18px; color:#005348; margin-left: 6.5em;">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</div>
